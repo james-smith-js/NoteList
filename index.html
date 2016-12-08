@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:margin-right = "http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <title>Note List</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/note_item.css">
+
+    <script src="js/note_list_items.js"></script>
+
+</head>
+<body>
+<div class = "container" id="notes_container">
+    <div class="item">
+        <div class = "panel panel-default" id="0">
+            <div class = "panel-body">
+                <div class = "row">
+                    <div class = "col-xs-12">
+                        <div class = "col-centered">
+                            <input type = "text" class = "form-control input_filed">
+                        </div>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col-xs-1 col-xs-offset-11">
+                        <div class = "dropdown">
+                            <button class = "btn btn-primary dropdown-toggle" type = "button"
+                                    data-toggle = "dropdown">Action
+                                <span class = "caret"></span></button>
+                            <ul class = "dropdown-menu">
+                                <li><a href = "#" onclick="editNote()">Edit</a></li>
+                                <li><a href = "#" onclick="removeNote()">Remove</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <button onclick="addButtonClick()">add</button>
+</div>
+<!-- jQuery library -->
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
