@@ -1,10 +1,10 @@
 /**
- * Created by tarasmotyl on 12/8/16.
+ * Created by james-smith-js on 12/8/16.
  */
 
 "use strict";
 
-function Item(id) {
+function Note(id) {
     let noteDiv;
 
     let addItemDiv = function () {
@@ -50,22 +50,14 @@ function Item(id) {
         removeButton.setAttribute("id", "remove");
         removeButton.innerHTML = "Remove";
 
-        /*removeButton.addEventListener('click', function (event) {
-            let button = event.target;
-            button.parentNode.parentNode.parentNode.removeChild(button.parentNode.parentNode);
-        });*/
-
         removeButton.addEventListener('click', function () {
             console.log(document.body.dispatchEvent(new CustomEvent("item_removed")));
             noteDiv.parentNode.removeChild(noteDiv);
+            setRemoveItemEventListener();
+            sendRemoveItemEvent();
         });
 
         parent.appendChild(removeButton);
-    };
-
-    this.updateId = function () {
-        console.log("id: " + id);
-        noteDiv.setAttribute("id", String(--id));
     };
 
     let addSaveButton = function (parent) {
@@ -76,12 +68,24 @@ function Item(id) {
         parent.appendChild(saveButton);
     };
 
+    let setRemoveItemEventListener = function () {
+        document.body.addEventListener("item_removed", function(e) {
+            console.log("catch item_removed event");
+            noteDiv.setAttribute("id", String(--id));
+        }, false);
+    };
+
+    let sendRemoveItemEvent = function () {
+        let evemt = new CustomEvent("item_removed");
+        document.body.dispatchEvent(evemt);
+    };
+
     this.toString = function () {
-        console.log("Item id: " + id);
+        console.log("Note id: " + id);
     };
 
     this.createItem = function () {
         let notesContainer = document.getElementById("notes_container");
         notesContainer.appendChild(addItemDiv());
-    }
+    };
 }
