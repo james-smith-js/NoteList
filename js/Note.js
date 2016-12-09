@@ -4,6 +4,8 @@
 
 "use strict";
 
+let id = 0;
+
 function Note(id) {
     let noteDiv;
 
@@ -51,10 +53,11 @@ function Note(id) {
         removeButton.innerHTML = "Remove";
 
         removeButton.addEventListener('click', function () {
-            console.log(document.body.dispatchEvent(new CustomEvent("item_removed")));
             noteDiv.parentNode.removeChild(noteDiv);
             setRemoveItemEventListener();
             sendRemoveItemEvent();
+
+            document.body.dispatchEvent(new CustomEvent("testEvent"));
         });
 
         parent.appendChild(removeButton);
@@ -88,4 +91,9 @@ function Note(id) {
         let notesContainer = document.getElementById("notes_container");
         notesContainer.appendChild(addItemDiv());
     };
+}
+
+function addButtonClick() {
+    let newItem = new Note(id++);
+    newItem.createItem();
 }

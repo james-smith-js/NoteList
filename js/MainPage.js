@@ -11,10 +11,14 @@ function NoteList() {
 
         noteArray.push(newItem);
     };
+
+    this.listener = function () {
+        document.addEventListener("testEvent", function (e) {
+            console.log("testEvent here");
+        })
+    }
 }
 
 let noteList = new NoteList();
+noteList.listener();
 
-function addButtonClick() {
-    noteList.addNote();
-}
